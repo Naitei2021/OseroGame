@@ -174,10 +174,9 @@ Public Class UserData
 
         Catch ex As Exception
             MessageBox.Show("ユーザーデータの読み込みに失敗しました", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            ret = Nothing
+        Finally
+            Return ret
         End Try
-
-        Return ret
     End Function
 
 #End Region
