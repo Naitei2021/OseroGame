@@ -86,6 +86,9 @@ Public Class OseroCom
         Dim stone As Integer
         For i = 0 To BoadSize - 1
             For ii = 0 To BoadSize - 1
+                '盤面データから指定マスの石色を取得
+                stone = GetBattleField(i, ii)
+
                 If stone <> Color.NoColor Then
                     '画面に描写
                     ImageDraw.DrawStone(Osr001.Pnl_GameArea, i, ii, stone)
