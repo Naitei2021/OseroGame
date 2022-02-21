@@ -43,7 +43,12 @@ Public Class Osr001
     Private Sub Btn_Start_Click(sender As Object, e As EventArgs) Handles Btn_Start.Click
         Try
             If game.GameStatus = Game.Status.Game_status_NoGame Then
-                game.GameStart(Enemy.EnemyIs.CPU, Enemy.Level.nakamura)
+
+                '敵レベルを選択
+                Dim selectForm As New Osr002
+                Dim enemyLV As Integer = selectForm.ShowDialog()
+
+                game.GameStart(Enemy.EnemyIs.CPU, enemyLV)
                 Btn_Start.Text = "中断する"
             Else
                 'If MessageBox.Show("途中だけど止める？", "確認", MessageBoxButtons.YesNo) = DialogResult.Yes Then
