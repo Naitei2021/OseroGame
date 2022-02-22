@@ -185,8 +185,27 @@ Public Class Game
 #Region "再開処理"
 
     '再開(未実装)
-    Public Sub GameResumption()
+    Public Sub GameResumption(A As UserData)
+        Dim Field(BoadSize - 1, BoadSize - 1) As Integer
+        Dim i = 0, ii = 0, iii = 0
+        Try
+            SetMyStone(A.UserStone)
+            SetTurnCount(A.MoveCount)
+            SetTurn(Player.User)
+            For i = 0 To BoadSize - 1
+                For ii = 0 To BoadSize - 1
+                    Field(ii, i) = A.LastBoad(iii)
+                    iii = iii + 1
+                Next
+            Next
+            SetBoad(Field)
+            'ユーザーデータの内容で盤面を描写
+            InitiaLizeOsero_Restart()
+            'ゲーム開始
+            GameStart(A.EnemyType, A.EnemyLV)
+        Catch ex As Exception
 
+        End Try
     End Sub
 
 #End Region
