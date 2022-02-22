@@ -148,7 +148,21 @@ Public Class UserData
     'ユーザIDを指定
     Public Sub New(id As String)
         'ユーザデータファイルを読み込んだ結果をプロパティにセット
-        Initialize()
+        Dim ret As UserData = Initialize()
+        If ret IsNot Nothing Then
+
+            UserID = ret.UserID
+            UserStone = ret.UserStone
+            BreakFlg = ret.BreakFlg
+            WinCount = ret.WinCount
+            LoseCount = ret.LoseCount
+            DrawCount = ret.DrawCount
+            EnemyType = ret.EnemyType
+            EnemyLV = ret.EnemyLV
+            LastBoad = ret.LastBoad
+            MoveCount = ret.MoveCount
+
+        End If
     End Sub
 
     Public Sub New()
@@ -174,6 +188,7 @@ Public Class UserData
 
         Catch ex As Exception
             MessageBox.Show("ユーザーデータの読み込みに失敗しました", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ret = Nothing
         End Try
 
         Return ret
