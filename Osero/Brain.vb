@@ -3,7 +3,7 @@
 Public Class Brain
     Inherits OseroCom
 
-    Private ReadOnly gm As New Game(0)
+    Private ReadOnly gm As New Game(Game.Color.White)
 
 #Region "実装してほしい内容"
 

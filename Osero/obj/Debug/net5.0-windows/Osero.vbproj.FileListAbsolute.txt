@@ -54,3 +54,13 @@ C:\Users\tomah\Desktop\Osero\Osero\obj\Debug\net5.0-windows\Osero.vbproj.CopyCom
 C:\Users\tomah\Desktop\Osero\Osero\obj\Debug\net5.0-windows\Osero.genruntimeconfig.cache
 C:\Users\tomah\Desktop\Osero\Osero\obj\Debug\net5.0-windows\Osero.Osr002.resources
 C:\Users\tomah\Desktop\Osero\Osero\obj\Debug\net5.0-windows\Osero.vbproj.AssemblyReference.cache
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.vbproj.AssemblyReference.cache
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.Osr001.resources
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.Osr002.resources
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.vbproj.GenerateResource.cache
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.AssemblyInfoInputs.cache
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.AssemblyInfo.vb
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.vbproj.CoreCompileInputs.cache
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.dll
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.pdb
