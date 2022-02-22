@@ -17,7 +17,6 @@ Public Class Osr001
 
 #End Region
 
-    'Osr001_Shown 内に「機能仕様書（再開処理）の項番1」を実装してください
 #Region "フォームロード関係"
 
     'FormLoad
@@ -36,7 +35,6 @@ Public Class Osr001
 
 #End Region
 
-    'Else の部分に「機能仕様所（中断処理）の項番1」を実装してください
 #Region "ボタンクリック関係"
 
     'ゲームスタート(中断)ボタン
