@@ -3,8 +3,6 @@
 Public Class Brain
     Inherits OseroCom
 
-    Private ReadOnly gm As New Game(Game.Color.White)
-
 #Region "実装してほしい内容"
 
     'どこへ石を置くか考える部分
@@ -29,7 +27,7 @@ Public Class Brain
     '引数：x  ->  置きたい場所  
     '      y  ->　置きたい場所
     '戻値：置き場所がない場合 false
-    Public Function Think(ByRef x As Integer, ByRef y As Integer, userStone As Integer, level As Integer) As Boolean
+    Public Function Think(ByRef x As Integer, ByRef y As Integer, userStone As Integer, level As Integer, Index As Integer) As Boolean
         Dim ret As Boolean = True
         '石の色(myStone が今回置く石です）
         myStone = 1 - userStone
@@ -44,9 +42,9 @@ Public Class Brain
             Case Enemy.Level.easy
                 Return Think_Easy(x, y)
             Case Enemy.Level.normal
-                Return Think_Normal(x, y)
+                Return Think_Normal(x, y, Index)
             Case Enemy.Level.hard
-                Return Think_Hard(x, y)
+                Return Think_Hard(x, y, Index)
             Case Else
                 Return Think_Nakamura(x, y)
         End Select
@@ -99,7 +97,7 @@ Public Class Brain
 
 
     'どこに置くか（レベル：普通）
-    Private Function Think_Normal(ByRef x As Integer, ByRef y As Integer) As Boolean
+    Private Function Think_Normal(ByRef x As Integer, ByRef y As Integer, Index As Integer) As Boolean
         Dim ret As Boolean = False
 
         Dim startPoint As New Point(0, 0)
@@ -119,7 +117,7 @@ Public Class Brain
                 setCount = Set_Count(startPoint)
 
                 '巡目が前半の場合は裏返せる石の個数が少ない方を、後半の場合は多い方を評価する
-                If gm.GameIndex <= 30 Then
+                If Index <= 30 Then
                     HyokaFunction = -setCount
                 Else
                     HyokaFunction = setCount
@@ -154,7 +152,7 @@ Public Class Brain
 
 
     'どこに置くか（レベル：難しい）
-    Private Function Think_Hard(ByRef x As Integer, ByRef y As Integer) As Boolean
+    Private Function Think_Hard(ByRef x As Integer, ByRef y As Integer, Index As Integer) As Boolean
         Dim ret As Boolean = False
 
         Dim startPoint As New Point(0, 0)
@@ -175,7 +173,7 @@ Public Class Brain
                 setCount = Set_Count(startPoint)
 
                 '巡目が前半の場合は裏返せる石の個数が少ない方を、後半の場合は多い方を評価する
-                If gm.GameIndex <= 30 Then
+                If Index <= 30 Then
                     setCount = -setCount
                 Else
                     setCount = setCount
@@ -184,7 +182,7 @@ Public Class Brain
                 '周りの空白でないマスの数
                 AroundCount = Count_around_Nocolor(startPoint)
 
-                If gm.GameIndex > 20 AndAlso gm.GameIndex < 40 Then
+                If Index > 20 AndAlso Index < 40 Then
                     '中盤は周りの空白でないマスの数を優先して評価
                     HyokaFunction = 10 * AroundCount + setCount
                 Else

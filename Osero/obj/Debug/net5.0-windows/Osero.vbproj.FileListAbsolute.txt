@@ -64,3 +64,14 @@ C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.As
 C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.vbproj.CoreCompileInputs.cache
 C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.dll
 C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.pdb
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\bin\Debug\net5.0-windows\Osero.exe
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\bin\Debug\net5.0-windows\Osero.deps.json
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\bin\Debug\net5.0-windows\Osero.runtimeconfig.json
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\bin\Debug\net5.0-windows\Osero.runtimeconfig.dev.json
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\bin\Debug\net5.0-windows\Osero.dll
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\bin\Debug\net5.0-windows\Osero.pdb
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.vbproj.CopyComplete
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\refint\Osero.dll
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\Osero.genruntimeconfig.cache
+C:\Users\takeda\OseroGameLocal\OseroGame\Osero\obj\Debug\net5.0-windows\ref\Osero.dll
