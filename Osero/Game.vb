@@ -64,9 +64,6 @@ Public Class Game
 
 #End Region
 
-    'EnemyTurn関数、敵のレベルを設定する箇所に
-    '「nakamura」を渡しています
-    'レベルに応じた処理を実装後、「nakamura]を「selectedEnemyLV」に変更する必要あり
 #Region "毎ターン処理"
 
     '1手毎に呼ばれる処理
@@ -136,14 +133,15 @@ Public Class Game
         'パスフラグ
         Dim flgPAss As Boolean = False
 
-        '敵クラス
-        Dim enemy As New Enemy(Enemy.EnemyIs.CPU, Enemy.Level.hard, GetBoad)
+        '敵クラスはゲーム開始時に作成するためコメント化
+        'Dim enemy As New Enemy(Enemy.EnemyIs.CPU, Enemy.Level.nakamura, GetBoad)
 
         Do While flgPAss = False
 
             '石をどこに置くか考える
             Dim x As Integer
             Dim y As Integer
+
             If enemy.Think(x, y, UserStone, GameIndex) = False Then
                 '置ける場所がないためパス
                 MessageBox.Show("相手がパスしました")
@@ -170,48 +168,50 @@ Public Class Game
 
 #End Region
 
-
-    '川本くんor 村上くんに実装してもらう
 #Region "中断処理"
 
     '中断(未実装)
-    Public Function GameInterruption() As Boolean
-        Return True
+    Public Function GameBreak() As Boolean
+
     End Function
 
 #End Region
 
-
-    '川本くんor 村上くんに実装してもらう
 #Region "再開処理"
 
-    '再開(未実装)
-    Public Sub GameResumption(A As UserData)
+    '再開
+    '引数：GameData -> ユーザデータファイルの内容
+    Public Sub GameRestart(GameData As UserData)
         Dim Field(BoadSize - 1, BoadSize - 1) As Integer
-        Dim i = 0, ii = 0, iii = 0
+        Dim count = 0
+
         Try
-            SetMyStone(A.UserStone)
-            SetTurnCount(A.MoveCount)
+            SetMyStone(GameData.UserStone)
+            SetTurnCount(GameData.MoveCount)
             SetTurn(Player.User)
+
             For i = 0 To BoadSize - 1
                 For ii = 0 To BoadSize - 1
-                    Field(ii, i) = A.LastBoad(iii)
-                    iii = iii + 1
+                    Field(ii, i) = GameData.LastBoad(count)
+                    count = count + 1
                 Next
             Next
             SetBoad(Field)
-            'ユーザーデータの内容で盤面を描写
-            InitiaLizeOsero_Restart()
-            'ゲーム開始
-            GameStart(A.EnemyType, A.EnemyLV)
-        Catch ex As Exception
 
+            'ユーザーデータの内容で盤面を描写
+            'ここで描写すると後で初期盤面に上書きされるためコメント化
+            'InitiaLizeOsero_Restart()
+
+            'ゲーム開始
+            GameStart(GameData.EnemyType, GameData.EnemyLV)
+
+        Catch ex As Exception
+            MessageBox.Show("画面表示に失敗しました")
+            Throw
         End Try
     End Sub
 
 #End Region
-
-
 
 #Region "終了処理"
 
