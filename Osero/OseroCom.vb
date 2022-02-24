@@ -78,7 +78,7 @@ Public Class OseroCom
     End Sub
 
     'オセロの初期設定（再開時）
-    Private Sub InitiaLizeOsero_Restart()
+    Public Sub InitiaLizeOsero_Restart()
         '盤面を白紙に
         ImageDraw.ClearBoad(Osr001.Pnl_GameArea)
 

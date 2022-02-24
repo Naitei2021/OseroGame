@@ -8,6 +8,9 @@ Public Class Osr001
     'ユーザが選択した敵のレベル
     Private selectedEnemyLV As Integer
 
+    '再開フラグ
+    Private flgReStart As Boolean = False
+
 #End Region
 
 #Region "他クラス"
@@ -17,7 +20,6 @@ Public Class Osr001
 
 #End Region
 
-    'Osr001_Shown 内に「機能仕様書（再開処理）の項番1」を実装してください
 #Region "フォームロード関係"
 
     'FormLoad
@@ -30,8 +32,39 @@ Public Class Osr001
     'Shown
     Private Sub Osr001_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
 
+        Try
+            'ユーザデータファイルを取得
+            Dim showdata As New UserData("OseroUser")
 
+            'Nothingの場合ここで処理終了
+            If showdata Is Nothing Then
+                Exit Sub
+            Else
+                '中断フラグが１じゃない場合ここで処理終了
+                If showdata.BreakFlg = UserData.Flg.FlgOn Then
+                    '再開処理
+                    Dim log As DialogResult = MessageBox.Show("前回中断したデータが存在します。途中から再開しますか？", "確認メッセージ", MessageBoxButtons.YesNo)
 
+                    '再開する場合(はい)
+                    If log = DialogResult.Yes Then
+                        game.GameRestart(showdata)
+                        flgReStart = True
+                        Btn_Start.Text = "中断する"
+                    End If
+
+                    '再開の有無に関わらずユーザデータファイルを更新
+                    showdata.BreakFlg = UserData.Flg.FlgOff
+                    'ShowData.EnemyType = ""
+                    'ShowData.EnemyLV = ""
+                    'ShowData.MoveCount = 0
+                    'ShowData.LastBoad = {""}
+                    showdata.SaveUserData()
+                End If
+            End If
+        Catch ex As Exception
+            MessageBox.Show("画面表示に失敗しました", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Close()
+        End Try
     End Sub
 
 #End Region
@@ -43,14 +76,14 @@ Public Class Osr001
     Private Sub Btn_Start_Click(sender As Object, e As EventArgs) Handles Btn_Start.Click
         Try
             If game.GameStatus = Game.Status.Game_status_NoGame Then
-
-                '敵レベルを選択
+                '敵レベルを選択してゲーム開始
                 Dim selectForm As New Osr002
                 Dim enemyLV As Integer = selectForm.ShowDialog()
 
                 game.GameStart(Enemy.EnemyIs.CPU, enemyLV)
                 Btn_Start.Text = "中断する"
             Else
+                '中断ボタンをクリックした時の処理
                 'If MessageBox.Show("途中だけど止める？", "確認", MessageBoxButtons.YesNo) = DialogResult.Yes Then
                 '    game.GameGiveup()
                 '    Btn_Start.Text = "ゲームスタート"
@@ -70,8 +103,14 @@ Public Class Osr001
 
     '画面にオセロ用の線を引く
     Private Sub Pnl_GameArea_Paint(sender As Object, e As PaintEventArgs) Handles Pnl_GameArea.Paint
-        ImageDraw.drawField(Pnl_GameArea, e)
-        ImageDraw.refresh(Pnl_GameArea)
+        ImageDraw.DrawField(Pnl_GameArea, e)
+
+        '再開フラグが立っていない場合、盤面を初期表示
+        If flgReStart Then
+            game.InitiaLizeOsero_Restart()
+        Else
+            ImageDraw.Refresh(Pnl_GameArea)
+        End If
     End Sub
 
     'マス目をクリックした時

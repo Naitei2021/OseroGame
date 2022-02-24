@@ -8,7 +8,6 @@ Public Class UserData
 #Region "ユーザデータファイル情報"
 
     'ユーザデータの場所
-    'Private dataFilePath As String = "C:\Osero\Data\userData.json"
     Private dataFilePath As String = "../../../../\Data\"
 
     'ファイル名
@@ -147,7 +146,6 @@ Public Class UserData
 
     'ユーザIDを指定
     Public Sub New(id As String)
-        'ユーザデータファイルを読み込んだ結果をプロパティにセット
         Initialize()
     End Sub
 
@@ -163,7 +161,9 @@ Public Class UserData
         Try
             'ユーザデータが存在しない場合何もしない
             If IO.File.Exists(dataFilePath & dataFileName) = False Then
-                MessageBox.Show("ユーザーデータファイルが存在しません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                '初回はユーザファイルが存在しないため、
+                'ファイルが存在しなくてもエラーメッセージは表示しないよう変更
+                'MessageBox.Show("ユーザーデータファイルが存在しません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return ret
             End If
 
@@ -172,8 +172,24 @@ Public Class UserData
                 ret = JsonConvert.DeserializeObject(Of UserData)(reader.ReadToEnd)
             End Using
 
+            'ユーザデータファイルを読み込んだ結果をプロパティにセット
+            'Dim ret As UserData = Initialize()
+            If ret IsNot Nothing Then
+                UserID = ret.UserID
+                UserStone = ret.UserStone
+                BreakFlg = ret.BreakFlg
+                WinCount = ret.WinCount
+                LoseCount = ret.LoseCount
+                DrawCount = ret.DrawCount
+                EnemyType = ret.EnemyType
+                EnemyLV = ret.EnemyLV
+                LastBoad = ret.LastBoad
+                MoveCount = ret.MoveCount
+            End If
+
         Catch ex As Exception
             MessageBox.Show("ユーザーデータの読み込みに失敗しました", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ret = Nothing
         End Try
 
         Return ret
@@ -212,6 +228,7 @@ Public Class UserData
     End Function
 
 #End Region
+
 
 
 End Class
