@@ -168,15 +168,41 @@ Public Class Game
 
 #End Region
 
+'川本くん担当
 #Region "中断処理"
 
     '中断(未実装)
     Public Function GameBreak() As Boolean
+        Dim i = 0
+        Dim a = 0
+        Dim b = 0
+        Dim c = 0
+        Dim index = 0
+
+        Try
+            Dim data As New UserData
+            data.UserID = userName
+            data.UserStone = UserStone
+            data.BreakFlg = UserData.Flg.FlgOn
+            data.EnemyType = enemy.EnemyType
+            data.EnemyLV = enemy.EnemyLevel
+            data.MoveCount = GameIndex
+            For i = 0 To BoadSize - 1
+                For a = 0 To BoadSize - 1
+
+                Next
+            Next
+
+            'data.LastBoad = GetBoad()
+            data.SaveUserData()
+
+        Catch ex As Exception
+        End Try
     End Function
 
 #End Region
 
-'川本くん担当
+
 #Region "再開処理"
 
     '再開
