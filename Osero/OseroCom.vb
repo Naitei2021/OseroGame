@@ -369,7 +369,6 @@ Public Class OseroCom
 #End Region
 
 
-
 #Region "コンストラクタ"
 
     'コンストラクタ
