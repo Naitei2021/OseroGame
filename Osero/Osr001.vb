@@ -31,7 +31,6 @@ Public Class Osr001
 
     'Shown
     Private Sub Osr001_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-
         Try
             'ユーザデータファイルを取得
             Dim showdata As New UserData("OseroUser")
@@ -81,6 +80,7 @@ Public Class Osr001
                 Dim enemyLV As Integer = selectForm.ShowDialog()
 
                 game.GameStart(Enemy.EnemyIs.CPU, enemyLV)
+
                 Btn_Start.Text = "中断する"
             Else
                 '中断ボタンをクリックした時の処理
@@ -111,6 +111,7 @@ Public Class Osr001
         Else
             ImageDraw.Refresh(Pnl_GameArea)
         End If
+
     End Sub
 
     'マス目をクリックした時
