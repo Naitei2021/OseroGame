@@ -5,14 +5,14 @@ Public Class Enemy
 
 
     'どこに石を置くか考える
-    Public Overloads Function Think(ByRef x As Integer, ByRef y As Integer, userStone As Integer) As Boolean
+    Public Overloads Function Think(ByRef x As Integer, ByRef y As Integer, userStone As Integer, Index As Integer) As Boolean
         '敵が人なら何もせず終了
         If EnemyType = EnemyIs.User Then
             Return False
         End If
 
         'どこに置くか考える
-        Return MyBase.Think(x, y, userStone, EnemyLevel)
+        Return MyBase.Think(x, y, userStone, EnemyLevel, Index)
     End Function
 
 

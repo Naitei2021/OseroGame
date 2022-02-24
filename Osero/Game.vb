@@ -137,14 +137,14 @@ Public Class Game
         Dim flgPAss As Boolean = False
 
         '敵クラス
-        Dim enemy As New Enemy(Enemy.EnemyIs.CPU, Enemy.Level.nakamura, GetBoad)
+        Dim enemy As New Enemy(Enemy.EnemyIs.CPU, Enemy.Level.hard, GetBoad)
 
         Do While flgPAss = False
 
             '石をどこに置くか考える
             Dim x As Integer
             Dim y As Integer
-            If enemy.Think(x, y, UserStone) = False Then
+            If enemy.Think(x, y, UserStone, GameIndex) = False Then
                 '置ける場所がないためパス
                 MessageBox.Show("相手がパスしました")
                 SetTurn(Player.User)
@@ -176,6 +176,7 @@ Public Class Game
 
     '中断(未実装)
     Public Function GameInterruption() As Boolean
+        Return True
     End Function
 
 #End Region
