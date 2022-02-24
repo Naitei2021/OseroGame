@@ -176,6 +176,7 @@ Public Class Game
 
 #End Region
 
+'川本くん担当
 #Region "再開処理"
 
     '再開
