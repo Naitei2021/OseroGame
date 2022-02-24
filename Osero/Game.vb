@@ -142,7 +142,7 @@ Public Class Game
             Dim x As Integer
             Dim y As Integer
 
-            If enemy.Think(x, y, UserStone) = False Then
+            If enemy.Think(x, y, UserStone, GameIndex) = False Then
                 '置ける場所がないためパス
                 MessageBox.Show("相手がパスしました")
                 SetTurn(Player.User)
