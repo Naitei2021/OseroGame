@@ -31,6 +31,10 @@ Public Class Osr001
 
     'Shown
     Private Sub Osr001_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        Dim FileName As String = "userData.json"
+        If System.IO.File.Exists($"../../../../\Data\{FileName}") Then
+            Exit Sub
+        End If
         Try
             'ユーザデータファイルを取得
             Dim showdata As New UserData("OseroUser")
