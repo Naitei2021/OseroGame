@@ -31,8 +31,11 @@ Public Class Osr001
 
     'Shown
     Private Sub Osr001_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        If Not System.IO.File.Exists("../../../../\Data\") Then
+            Exit Sub
+        End If
         Try
-            'ユーザデータファイルを取得
+            'ユーザデータファイルを取得  
             Dim showdata As New UserData("OseroUser")
 
             'Nothingの場合ここで処理終了

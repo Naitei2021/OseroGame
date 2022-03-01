@@ -48,19 +48,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\takeda\\.nuget\\packages\\": {}
+    "C:\\Users\\Owner\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\takeda\\OseroGameLocal\\OseroGame\\Osero\\Osero.vbproj",
+      "projectUniqueName": "C:\\Users\\Owner\\Desktop\\OseroGameLocal\\OseroGame\\Osero\\Osero.vbproj",
       "projectName": "Osero",
-      "projectPath": "C:\\Users\\takeda\\OseroGameLocal\\OseroGame\\Osero\\Osero.vbproj",
-      "packagesPath": "C:\\Users\\takeda\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\takeda\\OseroGameLocal\\OseroGame\\Osero\\obj\\",
+      "projectPath": "C:\\Users\\Owner\\Desktop\\OseroGameLocal\\OseroGame\\Osero\\Osero.vbproj",
+      "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Owner\\Desktop\\OseroGameLocal\\OseroGame\\Osero\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\takeda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -109,7 +109,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
