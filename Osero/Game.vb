@@ -53,6 +53,9 @@ Public Class Game
             '敵インスタンスを作成
             enemy = New Enemy(enemyType, enemyLV, GetBoad)
 
+            'ユーザーターンに設定
+            SetTurn(Player.User)
+
         Catch ex As Exception
             Throw
         End Try
@@ -103,7 +106,7 @@ Public Class Game
         '選んだマスに置けるかどうか
         If CanSetStone(stone, x, y) = False Then
             MessageBox.Show("そこには置けないよー")
-            SetTurn(1 - turn)
+            SetTurn(turn)
             Return AfterTurnEnd.MyTurn
         End If
 

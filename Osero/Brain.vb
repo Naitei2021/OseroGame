@@ -404,10 +404,11 @@ Public Class Brain
     Private Function Count_around_Nocolor(Startpoint As Point)
         Dim setCount As Integer = 0
         Dim vector As Integer
-        Dim nextX As Integer = Startpoint.X
-        Dim nextY As Integer = Startpoint.Y
 
         For vector = 0 To BoadSize - 1
+            Dim nextX As Integer = Startpoint.X
+            Dim nextY As Integer = Startpoint.Y
+
             '検証する座標を設定
             Select Case vector
                 Case 0

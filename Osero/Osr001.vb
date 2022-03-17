@@ -116,7 +116,8 @@ Public Class Osr001
 
     'マス目をクリックした時
     Private Sub Pnl_GameArea_Click(sender As Object, e As EventArgs) Handles Pnl_GameArea.Click
-        If game.GameStatus <> Game.Status.Game_status_Game And game.Turn = 0 Then
+        'ゲーム中でないかユーザーのターンでない場合
+        If game.GameStatus <> Game.Status.Game_status_Game Or game.Turn <> 0 Then
             Exit Sub
         End If
 
