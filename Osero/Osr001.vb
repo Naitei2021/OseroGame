@@ -71,10 +71,9 @@ Public Class Osr001
 
 #End Region
 
-    'Else の部分に「機能仕様所（中断処理）の項番1」を実装してください
 #Region "ボタンクリック関係"
 
-    'ゲームスタート(中断)ボタン
+    'ゲームスタート、中断ボタン
     Private Sub Btn_Start_Click(sender As Object, e As EventArgs) Handles Btn_Start.Click
         Try
             If game.GameStatus = Game.Status.Game_status_NoGame Then
@@ -87,18 +86,35 @@ Public Class Osr001
                 Btn_Start.Text = "中断する"
             Else
                 '中断ボタンをクリックした時の処理
-                'If MessageBox.Show("途中だけど止める？", "確認", MessageBoxButtons.YesNo) = DialogResult.Yes Then
-                '    game.GameGiveup()
-                '    Btn_Start.Text = "ゲームスタート"
-                'End If
+                Dim result As DialogResult = MessageBox.Show("盤面を保存して中断しますか？",
+                                             "質問",
+                                             MessageBoxButtons.YesNoCancel,
+                                             MessageBoxIcon.Exclamation,
+                                             MessageBoxDefaultButton.Button2)
+                If result = DialogResult.Yes Then
+                    '「はい」が選択された時 
+                    If game.GameBreak() Then
+                        Application.Exit()
+                    End If
+
+
+                ElseIf result = DialogResult.No Then
+                    '「いいえ」が選択された時 
+                    Btn_Start.Text = "ゲームスタート"
+                    Application.Exit()
+
+                ElseIf result = DialogResult.Cancel Then
+                    '「キャンセル」が選択された時 
+                    '何も処理を行わない
+                End If
 
             End If
 
         Catch ex As Exception
             MessageBox.Show("中断処理に失敗しました", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
 
+    End Sub
 
 #End Region
 
