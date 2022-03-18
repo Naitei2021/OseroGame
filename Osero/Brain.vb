@@ -58,7 +58,7 @@ Public Class Brain
         '①裏返せる石が１番多い個所を探す
         Dim startPoint As New Point(0, 0)
         Dim setMax As Integer = 0
-        Dim setCount As Integer = 0
+        Dim setCount As Integer
 
         For i = 0 To BoadSize - 1
             For ii = 0 To BoadSize - 1
@@ -102,8 +102,8 @@ Public Class Brain
 
         Dim startPoint As New Point(0, 0)
         Dim setMax As Integer = -100000
-        Dim setCount As Integer = 0
-        Dim HyokaFunction As Integer = 0
+        Dim setCount As Integer
+        Dim HyokaFunction As Integer
 
         For i = 0 To BoadSize - 1
             For ii = 0 To BoadSize - 1
@@ -157,9 +157,9 @@ Public Class Brain
 
         Dim startPoint As New Point(0, 0)
         Dim setMax As Integer = -100000
-        Dim setCount As Integer = 0
-        Dim AroundCount As Integer = 0
-        Dim HyokaFunction As Integer = 0
+        Dim setCount As Integer
+        Dim AroundCount As Integer
+        Dim HyokaFunction As Integer
 
         For i = 0 To BoadSize - 1
             For ii = 0 To BoadSize - 1
@@ -451,7 +451,6 @@ Public Class Brain
 
         Return setCount
     End Function
-
 
     '置く場所に応じて点数を返す
     Private Function PointCount(startPoint As Point, mode As Integer)
