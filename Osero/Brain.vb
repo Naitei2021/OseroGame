@@ -58,7 +58,7 @@ Public Class Brain
         '①裏返せる石が１番多い個所を探す
         Dim startPoint As New Point(0, 0)
         Dim setMax As Integer = 0
-        Dim setCount As Integer = 0
+        Dim setCount As Integer
 
         For i = 0 To BoadSize - 1
             For ii = 0 To BoadSize - 1
@@ -102,8 +102,8 @@ Public Class Brain
 
         Dim startPoint As New Point(0, 0)
         Dim setMax As Integer = -100000
-        Dim setCount As Integer = 0
-        Dim HyokaFunction As Integer = 0
+        Dim setCount As Integer
+        Dim HyokaFunction As Integer
 
         For i = 0 To BoadSize - 1
             For ii = 0 To BoadSize - 1
@@ -116,7 +116,7 @@ Public Class Brain
                 '裏返せる石の個数
                 setCount = Set_Count(startPoint)
 
-                '巡目が前半の場合は裏返せる石の個数が少ない方を、後半の場合は多い方を評価する
+                '前半は裏返せる石の個数が少ない方を、後半は多い方を評価する
                 If Index <= 30 Then
                     HyokaFunction = -setCount
                 Else
@@ -157,9 +157,9 @@ Public Class Brain
 
         Dim startPoint As New Point(0, 0)
         Dim setMax As Integer = -100000
-        Dim setCount As Integer = 0
-        Dim AroundCount As Integer = 0
-        Dim HyokaFunction As Integer = 0
+        Dim setCount As Integer
+        Dim AroundCount As Integer
+        Dim HyokaFunction As Integer
 
         For i = 0 To BoadSize - 1
             For ii = 0 To BoadSize - 1
@@ -404,10 +404,11 @@ Public Class Brain
     Private Function Count_around_Nocolor(Startpoint As Point)
         Dim setCount As Integer = 0
         Dim vector As Integer
-        Dim nextX As Integer = Startpoint.X
-        Dim nextY As Integer = Startpoint.Y
 
         For vector = 0 To BoadSize - 1
+            Dim nextX As Integer = Startpoint.X
+            Dim nextY As Integer = Startpoint.Y
+
             '検証する座標を設定
             Select Case vector
                 Case 0
@@ -450,7 +451,6 @@ Public Class Brain
 
         Return setCount
     End Function
-
 
     '置く場所に応じて点数を返す
     Private Function PointCount(startPoint As Point, mode As Integer)
