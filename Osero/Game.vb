@@ -53,6 +53,9 @@ Public Class Game
             '敵インスタンスを作成
             enemy = New Enemy(enemyType, enemyLV, GetBoad)
 
+            'ユーザーターンに設定
+            SetTurn(Player.User)
+
         Catch ex As Exception
             Throw
         End Try
@@ -103,7 +106,7 @@ Public Class Game
         '選んだマスに置けるかどうか
         If CanSetStone(stone, x, y) = False Then
             MessageBox.Show("そこには置けないよー")
-            SetTurn(1 - turn)
+            SetTurn(turn)
             Return AfterTurnEnd.MyTurn
         End If
 
@@ -168,13 +171,15 @@ Public Class Game
 
 #End Region
 
+'川本くん担当
 #Region "中断処理"
 
-    '中断
+    '中断(未実装)
     Public Function GameBreak() As Boolean
-        Dim ret As Boolean = False
-
-        Dim LastBoad(BoadSize * BoadSize) As Integer
+        Dim i = 0
+        Dim a = 0
+        Dim b = 0
+        Dim c = 0
         Dim index = 0
 
         Try
@@ -185,31 +190,21 @@ Public Class Game
             data.EnemyType = enemy.EnemyType
             data.EnemyLV = enemy.EnemyLevel
             data.MoveCount = GameIndex
-
             For i = 0 To BoadSize - 1
-                For ii = 0 To BoadSize - 1
-                    LastBoad(index) = BattleField(ii, i)
-                    index += 1
+                For a = 0 To BoadSize - 1
+
                 Next
             Next
 
-            data.LastBoad = LastBoad
             'data.LastBoad = GetBoad()
-
-            '保存する処理
             data.SaveUserData()
 
-            MessageBox.Show("中断データを保存しました")
-            ret = True
-            Return ret
-
         Catch ex As Exception
-            MessageBox.Show("中断情報の保存に失敗しました")
-            Return ret
         End Try
     End Function
 
 #End Region
+
 
 #Region "再開処理"
 

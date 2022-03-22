@@ -31,11 +31,8 @@ Public Class Osr001
 
     'Shown
     Private Sub Osr001_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-        If Not System.IO.File.Exists("../../../../\Data\") Then
-            Exit Sub
-        End If
         Try
-            'ユーザデータファイルを取得  
+            'ユーザデータファイルを取得
             Dim showdata As New UserData("OseroUser")
 
             'Nothingの場合ここで処理終了
@@ -71,50 +68,36 @@ Public Class Osr001
 
 #End Region
 
+    'Else の部分に「機能仕様所（中断処理）の項番1」を実装してください
 #Region "ボタンクリック関係"
 
-    'ゲームスタート、中断ボタン
+    'ゲームスタート(中断)ボタン
     Private Sub Btn_Start_Click(sender As Object, e As EventArgs) Handles Btn_Start.Click
         Try
             If game.GameStatus = Game.Status.Game_status_NoGame Then
                 '敵レベルを選択してゲーム開始
                 Dim selectForm As New Osr002
-                Dim enemyLV As Integer = selectForm.ShowDialog()
+                'Dim enemyLV As Integer = selectForm.ShowDialog()
+                selectForm.ShowDialog()
+                Dim enemyLV As Integer = selectForm.EnemyLv
 
                 game.GameStart(Enemy.EnemyIs.CPU, enemyLV)
 
                 Btn_Start.Text = "中断する"
             Else
                 '中断ボタンをクリックした時の処理
-                Dim result As DialogResult = MessageBox.Show("盤面を保存して中断しますか？",
-                                             "質問",
-                                             MessageBoxButtons.YesNoCancel,
-                                             MessageBoxIcon.Exclamation,
-                                             MessageBoxDefaultButton.Button2)
-                If result = DialogResult.Yes Then
-                    '「はい」が選択された時 
-                    If game.GameBreak() Then
-                        Application.Exit()
-                    End If
-
-
-                ElseIf result = DialogResult.No Then
-                    '「いいえ」が選択された時 
-                    Btn_Start.Text = "ゲームスタート"
-                    Application.Exit()
-
-                ElseIf result = DialogResult.Cancel Then
-                    '「キャンセル」が選択された時 
-                    '何も処理を行わない
-                End If
+                'If MessageBox.Show("途中だけど止める？", "確認", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+                '    game.GameGiveup()
+                '    Btn_Start.Text = "ゲームスタート"
+                'End If
 
             End If
 
         Catch ex As Exception
             MessageBox.Show("中断処理に失敗しました", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
     End Sub
+
 
 #End Region
 
@@ -135,7 +118,8 @@ Public Class Osr001
 
     'マス目をクリックした時
     Private Sub Pnl_GameArea_Click(sender As Object, e As EventArgs) Handles Pnl_GameArea.Click
-        If game.GameStatus <> Game.Status.Game_status_Game And game.Turn = 0 Then
+        'ゲーム中でないかユーザーのターンでない場合
+        If game.GameStatus <> Game.Status.Game_status_Game Or game.Turn <> 0 Then
             Exit Sub
         End If
 
