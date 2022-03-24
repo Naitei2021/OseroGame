@@ -105,7 +105,7 @@ Public Class Osr001
     Private Sub Pnl_GameArea_Paint(sender As Object, e As PaintEventArgs) Handles Pnl_GameArea.Paint
         ImageDraw.DrawField(Pnl_GameArea, e)
 
-        'ゲーム中じゃない場合初期盤面を描画
+        'ゲーム中じゃない場合初期盤面を描画する
         If game.GameStatus <> Game.Status.Game_status_Game Then
             ImageDraw.Refresh(Pnl_GameArea)
         Else

@@ -141,6 +141,7 @@ Public Class Game
 
         Do While flgPAss = False
 
+            '現在の盤面情報をセット
             enemy.SetBoad(GetBoad)
 
             '石をどこに置くか考える
