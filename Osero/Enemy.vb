@@ -11,8 +11,6 @@ Public Class Enemy
             Return False
         End If
 
-        '現在の盤面状況をセット'
-
         'どこに置くか考える
         Return MyBase.Think(x, y, userStone, EnemyLevel, Index)
     End Function

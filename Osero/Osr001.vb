@@ -9,7 +9,7 @@ Public Class Osr001
     Private selectedEnemyLV As Integer
 
     '再開フラグ
-    Private flgReStart As Boolean = False
+    'Private flgReStart As Boolean = False
 
 #End Region
 
@@ -32,7 +32,7 @@ Public Class Osr001
     'Shown
     Private Sub Osr001_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         Try
-            If Not System.IO.File.Exists("../../../../\Data\") Then
+            If Not System.IO.File.Exists("../../../../Data/UserData.json") Then
                 Exit Sub
             End If
 
@@ -51,7 +51,7 @@ Public Class Osr001
                     '再開する場合(はい)
                     If log = DialogResult.Yes Then
                         game.GameRestart(showdata)
-                        flgReStart = True
+                        'flgReStart = True
                         Btn_Start.Text = "中断する"
                     End If
 
@@ -127,10 +127,11 @@ Public Class Osr001
         ImageDraw.DrawField(Pnl_GameArea, e)
 
         '再開フラグが立っていない場合、盤面を初期表示
-        If flgReStart Then
-            game.InitiaLizeOsero_Restart()
-        Else
+
+        If game.GameStatus <> Game.Status.Game_status_Game Then
             ImageDraw.Refresh(Pnl_GameArea)
+        Else
+            game.InitiaLizeOsero_Restart()
         End If
 
     End Sub
