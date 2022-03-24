@@ -32,7 +32,7 @@ Public Class Osr001
     'Shown
     Private Sub Osr001_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         Try
-            If Not System.IO.File.Exists("../../../../\Data\") Then
+            If Not System.IO.File.Exists("../../../../Data/UserData.json") Then
                 Exit Sub
             End If
 
@@ -105,11 +105,11 @@ Public Class Osr001
     Private Sub Pnl_GameArea_Paint(sender As Object, e As PaintEventArgs) Handles Pnl_GameArea.Paint
         ImageDraw.DrawField(Pnl_GameArea, e)
 
-        '再開フラグが立っていない場合、盤面を初期表示
-        If flgReStart Then
-            game.InitiaLizeOsero_Restart()
-        Else
+        'ゲーム中じゃない場合初期盤面を描画する
+        If game.GameStatus <> Game.Status.Game_status_Game Then
             ImageDraw.Refresh(Pnl_GameArea)
+        Else
+            game.InitiaLizeOsero_Restart()
         End If
 
     End Sub
@@ -185,9 +185,6 @@ Public Class Osr001
 
         Exit Sub
 
-        'If MessageBox.Show("途中だけど止める？", "確認", MessageBoxButtons.YesNo) = DialogResult.No Then
-        '    e.Cancel = True
-        'End If
     End Sub
 
 
