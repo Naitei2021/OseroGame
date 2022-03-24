@@ -30,6 +30,8 @@ Public Class Enemy
         normal
         hard
         nakamura
+        VeryEasy
+        VeryHard
     End Enum
 
 #End Region

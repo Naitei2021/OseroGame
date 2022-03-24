@@ -146,6 +146,7 @@ Public Class UserData
 
     'ユーザIDを指定
     Public Sub New(id As String)
+        UserID = id
         Initialize()
     End Sub
 
@@ -205,11 +206,14 @@ Public Class UserData
         Dim ret As Boolean = False
 
         Try
-            'ユーザデータが存在しない場合、新規作成
             If IO.File.Exists(dataFilePath & dataFileName) = False Then
+                'ユーザデータが存在しない場合、新規作成
                 'MessageBox.Show("ユーザーデータファイルが存在しません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 'Return ret
-                IO.File.Create(dataFilePath & dataFileName)
+
+                Using fs As IO.FileStream = IO.File.Create(dataFilePath & dataFileName)
+                End Using
+
             End If
 
             '保存
