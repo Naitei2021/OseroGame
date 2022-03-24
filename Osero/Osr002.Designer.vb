@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Osr002
     Inherits System.Windows.Forms.Form
 
     'フォームがコンポーネントの一覧をクリーンアップするために dispose をオーバーライドします。
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,66 +20,61 @@ Partial Class Osr002
     'メモ: 以下のプロシージャは Windows フォーム デザイナーで必要です。
     'Windows フォーム デザイナーを使用して変更できます。  
     'コード エディターを使って変更しないでください。
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.Txt_Easy = New System.Windows.Forms.TextBox()
-        Me.Txt_Hard = New System.Windows.Forms.TextBox()
-        Me.Txt_Normal = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Lbl_PowerSelect = New System.Windows.Forms.Label()
+        Me.Btn_Hard = New System.Windows.Forms.Button()
+        Me.Btn_Normal = New System.Windows.Forms.Button()
+        Me.Btn_Easy = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'Txt_Easy
+        'Lbl_PowerSelect
         '
-        Me.Txt_Easy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Txt_Easy.Font = New System.Drawing.Font("Yu Gothic UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Txt_Easy.Location = New System.Drawing.Point(7, 75)
-        Me.Txt_Easy.Multiline = True
-        Me.Txt_Easy.Name = "Txt_Easy"
-        Me.Txt_Easy.Size = New System.Drawing.Size(120, 67)
-        Me.Txt_Easy.TabIndex = 1
-        Me.Txt_Easy.TabStop = False
-        Me.Txt_Easy.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "弱い"
-        Me.Txt_Easy.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.Lbl_PowerSelect.BackColor = System.Drawing.Color.LightCyan
+        Me.Lbl_PowerSelect.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Lbl_PowerSelect.Font = New System.Drawing.Font("Yu Gothic UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Lbl_PowerSelect.Location = New System.Drawing.Point(12, 9)
+        Me.Lbl_PowerSelect.Name = "Lbl_PowerSelect"
+        Me.Lbl_PowerSelect.Size = New System.Drawing.Size(410, 46)
+        Me.Lbl_PowerSelect.TabIndex = 4
+        Me.Lbl_PowerSelect.Text = "敵の強さを選んで下さい"
+        Me.Lbl_PowerSelect.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Txt_Hard
+        'Btn_Hard
         '
-        Me.Txt_Hard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Txt_Hard.Font = New System.Drawing.Font("Yu Gothic UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Txt_Hard.Location = New System.Drawing.Point(308, 75)
-        Me.Txt_Hard.Multiline = True
-        Me.Txt_Hard.Name = "Txt_Hard"
-        Me.Txt_Hard.Size = New System.Drawing.Size(120, 67)
-        Me.Txt_Hard.TabIndex = 2
-        Me.Txt_Hard.TabStop = False
-        Me.Txt_Hard.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "強い"
-        Me.Txt_Hard.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.Btn_Hard.BackColor = System.Drawing.SystemColors.Window
+        Me.Btn_Hard.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_Hard.Font = New System.Drawing.Font("Yu Gothic UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Btn_Hard.Location = New System.Drawing.Point(302, 75)
+        Me.Btn_Hard.Name = "Btn_Hard"
+        Me.Btn_Hard.Size = New System.Drawing.Size(120, 67)
+        Me.Btn_Hard.TabIndex = 4
+        Me.Btn_Hard.Text = "強い"
+        Me.Btn_Hard.UseVisualStyleBackColor = False
         '
-        'Txt_Normal
+        'Btn_Normal
         '
-        Me.Txt_Normal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Txt_Normal.Font = New System.Drawing.Font("Yu Gothic UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Txt_Normal.Location = New System.Drawing.Point(158, 75)
-        Me.Txt_Normal.Multiline = True
-        Me.Txt_Normal.Name = "Txt_Normal"
-        Me.Txt_Normal.Size = New System.Drawing.Size(120, 67)
-        Me.Txt_Normal.TabIndex = 3
-        Me.Txt_Normal.TabStop = False
-        Me.Txt_Normal.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "普通"
-        Me.Txt_Normal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.Btn_Normal.BackColor = System.Drawing.SystemColors.Window
+        Me.Btn_Normal.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_Normal.Font = New System.Drawing.Font("Yu Gothic UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Btn_Normal.Location = New System.Drawing.Point(162, 75)
+        Me.Btn_Normal.Name = "Btn_Normal"
+        Me.Btn_Normal.Size = New System.Drawing.Size(120, 67)
+        Me.Btn_Normal.TabIndex = 3
+        Me.Btn_Normal.Text = "普通"
+        Me.Btn_Normal.UseVisualStyleBackColor = False
         '
-        'TextBox4
+        'Btn_Easy
         '
-        Me.TextBox4.BackColor = System.Drawing.SystemColors.ActiveBorder
-        Me.TextBox4.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox4.Font = New System.Drawing.Font("Yu Gothic UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TextBox4.Location = New System.Drawing.Point(1, 3)
-        Me.TextBox4.Multiline = True
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(429, 33)
-        Me.TextBox4.TabIndex = 4
-        Me.TextBox4.TabStop = False
-        Me.TextBox4.Text = "敵の強さを選んでください"
-        Me.TextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.Btn_Easy.BackColor = System.Drawing.SystemColors.Window
+        Me.Btn_Easy.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_Easy.Font = New System.Drawing.Font("Yu Gothic UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Btn_Easy.Location = New System.Drawing.Point(12, 75)
+        Me.Btn_Easy.Name = "Btn_Easy"
+        Me.Btn_Easy.Size = New System.Drawing.Size(120, 67)
+        Me.Btn_Easy.TabIndex = 2
+        Me.Btn_Easy.Text = "弱い"
+        Me.Btn_Easy.UseVisualStyleBackColor = False
         '
         'Osr002
         '
@@ -87,10 +82,11 @@ Partial Class Osr002
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(434, 179)
         Me.ControlBox = False
-        Me.Controls.Add(Me.TextBox4)
-        Me.Controls.Add(Me.Txt_Normal)
-        Me.Controls.Add(Me.Txt_Hard)
-        Me.Controls.Add(Me.Txt_Easy)
+        Me.Controls.Add(Me.Btn_Easy)
+        Me.Controls.Add(Me.Btn_Normal)
+        Me.Controls.Add(Me.Btn_Hard)
+        Me.Controls.Add(Me.Lbl_PowerSelect)
+        Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(450, 195)
         Me.MinimizeBox = False
@@ -99,12 +95,10 @@ Partial Class Osr002
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.TopMost = True
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents Txt_Easy As TextBox
-    Friend WithEvents Txt_Hard As TextBox
-    Friend WithEvents Txt_Normal As TextBox
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents Lbl_PowerSelect As Label
+    Friend WithEvents Btn_Hard As Button
+    Friend WithEvents Btn_Normal As Button
+    Friend WithEvents Btn_Easy As Button
 End Class

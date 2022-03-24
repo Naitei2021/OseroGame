@@ -45,6 +45,10 @@ Public Class Brain
                 Return Think_Normal(x, y, Index)
             Case Enemy.Level.hard
                 Return Think_Hard(x, y, Index)
+            Case Enemy.Level.VeryEasy
+                Return Think_VeryEasy(x, y, Index)
+            Case Enemy.Level.VeryHard
+                Return Think_VeryHard(x, y, Index)
             Case Else
                 Return Think_Nakamura(x, y)
         End Select
@@ -330,6 +334,77 @@ Public Class Brain
             ret = False
         End If
         Return ret
+    End Function
+
+    'どこに置くか（レベル：とても優しい）
+    Private Function Think_VeryEasy(ByRef x As Integer, ByRef y As Integer, Index As Integer) As Boolean
+        Dim ret As Boolean = False
+
+        Dim startPoint As New Point(0, 0)
+        Dim setMax As Integer = -100000
+        Dim setCount As Integer
+        Dim AroundCount As Integer
+        Dim HyokaFunction As Integer
+
+        For i = 0 To BoadSize - 1
+            For ii = 0 To BoadSize - 1
+                'x,yマスに石が置けるか
+                If CanSetStone(myStone, startPoint.X, startPoint.Y) = False Then
+                    startPoint.Y = startPoint.Y + 1
+                    Continue For
+                End If
+
+                '裏返せる石の個数
+                setCount = Set_Count(startPoint)
+
+                '巡目が前半の場合は裏返せる石の個数が多い方を、後半の場合は少ない方を評価する
+                If Index <= 30 Then
+                    setCount = setCount
+                Else
+                    setCount = -setCount
+                End If
+
+                '周りの空白でないマスの数
+                AroundCount = -Count_around_Nocolor(startPoint)
+
+                If Index > 20 AndAlso Index < 40 Then
+                    '中盤は周りの空白でないマスの数を優先して評価
+                    HyokaFunction = 10 * AroundCount + setCount
+                Else
+                    '序盤は裏返せる石の個数が多い方を評価し、終盤は裏返せる石の個数が少ない方を評価
+                    HyokaFunction = AroundCount + 10 * setCount
+                End If
+
+                '座標に応じてポイント増減
+                HyokaFunction -= PointCount(startPoint, 1)
+
+                '評価関数の最大を更新
+                If setMax < HyokaFunction Then
+                    setMax = HyokaFunction
+                    'このマスに決める
+                    x = startPoint.X
+                    y = startPoint.Y
+                    ret = True
+                End If
+
+                startPoint.Y = startPoint.Y + 1
+            Next ii
+            startPoint.X = i + 1
+            startPoint.Y = 0
+        Next i
+
+        '置くべきマス目が見つからなかった場合
+        If x = 99 Or y = 99 Then
+            ret = False
+        ElseIf OutofBoadCheck(x, y) = False Then
+            ret = False
+        End If
+        Return ret
+    End Function
+
+    'どこに置くか（レベル：とても難しい）
+    Private Function Think_VeryHard(ByRef x As Integer, ByRef y As Integer, Index As Integer) As Boolean
+        Return Think_Hard(x, y, Index)
     End Function
 
 #End Region
