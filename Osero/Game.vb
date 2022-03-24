@@ -141,6 +141,8 @@ Public Class Game
 
         Do While flgPAss = False
 
+            enemy.SetBoad(GetBoad)
+
             '石をどこに置くか考える
             Dim x As Integer
             Dim y As Integer
