@@ -85,6 +85,7 @@ Public Class Osr001
                 Dim enemyLV As Integer = selectForm.EnemyLv
 
                 game.GameStart(Enemy.EnemyIs.CPU, enemyLV)
+                game.SetTurnCount(1)
 
                 Btn_Start.Text = "中断する"
             Else
@@ -157,6 +158,12 @@ Public Class Osr001
 
     'フォームを閉じるとき
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+
+        'ゲームを始めていない場合盤面を保存せずに終了
+        If game.GameStatus = Game.Status.Game_status_NoGame Then
+            Exit Sub
+        End If
+
         Try
             '中断ボタンをクリックした時の処理
             Dim result As DialogResult = MessageBox.Show("盤面を保存して中断しますか？",
@@ -182,8 +189,6 @@ Public Class Osr001
             End If
         Catch ex As Exception
         End Try
-
-        Exit Sub
 
     End Sub
 
